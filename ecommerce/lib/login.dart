@@ -56,8 +56,8 @@ class _LoginState extends State<Login> {
                       // Usuario
                       TextField(
                         decoration: InputDecoration(
-                          labelText: 'Username',
-                          hintText: 'Enter your username',
+                          labelText: 'Usuario',
+                          hintText: 'Ingresar nombre de usuario',
                         ),
                       ),
 
@@ -67,27 +67,47 @@ class _LoginState extends State<Login> {
                       TextField(
                         obscureText: true,
                         decoration: InputDecoration(
-                          labelText: 'Password',
-                          hintText: 'Enter your password',
+                          labelText: 'Contraseña',
+                          hintText: 'Ingresar contraseña',
                         ),
                       ),
 
                       SizedBox(height: 24.0), // Spacer
-                      // Login Button
+                      // Boton login
                       ElevatedButton(
                         onPressed: () {
-                          // Handle login logic here
+                          // Logica login
                         },
-                        child: Text('Ingresar'),
+                        child: Text(
+                          'Ingresar',
+                          style: TextStyle(
+                              color: Color.fromRGBO(248, 248, 248, 1)),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color.fromRGBO(174, 0, 0, 1)),
                       ),
 
                       SizedBox(height: 24.0), // Spacer
-                      // Register Button
+                      // Boton registro
                       ElevatedButton(
                         onPressed: () {
-                          // Handle login logic here
+                          // Logica registro
                         },
-                        child: Text('Registrarte'),
+                        child: Text(
+                          'Registrarte',
+                          style:
+                              TextStyle(color: Color.fromRGBO(31, 31, 41, 1)),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          primary: Color.fromRGBO(248, 248, 248, 1),
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Color.fromRGBO(174, 0, 0, 1),
+                              width: 1.0,
+                            ),
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                        ),
                       ),
                     ],
                   ),
