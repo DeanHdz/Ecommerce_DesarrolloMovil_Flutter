@@ -1,3 +1,5 @@
+import 'package:ecommerce/login.dart';
+import 'package:ecommerce/register.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +11,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+<<<<<<< HEAD
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -19,6 +22,10 @@ class MainApp extends StatelessWidget {
           child: Text('Hello World!'),
         ),
       ),
+=======
+    return const MaterialApp(
+      home: Scaffold(body: Register()),
+>>>>>>> main
     );
   }
 }
