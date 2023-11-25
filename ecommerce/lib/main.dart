@@ -11,21 +11,8 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-<<<<<<< HEAD
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.lightBlue,
-          title: Text('Ecommerce'),
-        ),
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
-=======
     return const MaterialApp(
-      home: Scaffold(body: Register()),
->>>>>>> main
+      home: Register()
     );
   }
 }

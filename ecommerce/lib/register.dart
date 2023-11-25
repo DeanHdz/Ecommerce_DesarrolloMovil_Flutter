@@ -11,7 +11,9 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(174, 0, 0, 1),
+      ),
       body: Center(
         child: Container(
           color: Color.fromRGBO(174, 0, 0, 1),
@@ -39,6 +41,7 @@ class _RegisterState extends State<Register> {
                     color: Color.fromRGBO(248, 248, 248, 1),
                   ),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
                         margin: EdgeInsets.all(40.0),
