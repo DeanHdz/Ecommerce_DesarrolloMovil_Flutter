@@ -1,3 +1,4 @@
+import 'package:ecommerce/pageControl.dart';
 import 'package:ecommerce/pages/register.dart';
 import 'package:ecommerce/pages/home.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class _LoginState extends State<Login> {
               //Ir a pagina de registro
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => const Home()),
+                MaterialPageRoute(builder: (context) => const PageControl()),
               );
             },
           ),
