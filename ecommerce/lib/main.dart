@@ -1,8 +1,16 @@
-import 'package:ecommerce/home.dart';
+import 'package:ecommerce/models/shop.dart';
+import 'package:ecommerce/pages/home.dart';
+import 'package:ecommerce/themes/light_mode.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Shop(),
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -10,6 +18,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: Home());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const Home(),
+      theme: lightMode,
+    );
   }
 }
