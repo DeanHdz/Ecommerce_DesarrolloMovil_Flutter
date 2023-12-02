@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:ecommerce/pages/home.dart';
 import 'package:ecommerce/pages/login.dart';
 import 'package:ecommerce/pages/register.dart';
@@ -17,14 +19,20 @@ class PageControl extends StatefulWidget {
 }
 
 class _PageControlState extends State<PageControl> {
+  late dynamic selected = 0; // Declare as late to avoid null safety warnings
+  late PageController pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    selected = 0; // Initialize selected in initState
+    pageController = PageController(); // Initialize pageController in initState
+  }
+
   @override
   Widget build(BuildContext context) {
     // Acceder a productos en la tienda
     final products = context.watch<Shop>().shop;
-    // Pagina seleccionada, por default es el Home
-    int selected = 0;
-    // Controlador de vistas de pagina
-    PageController pageController = PageController();
 
     /*@override
     void dispose() {
@@ -37,13 +45,13 @@ class _PageControlState extends State<PageControl> {
       body: PageView(controller: pageController, children: [
         Center(child: Home(products: products)),
         const Center(child: Login()),
-        const Center(child: Register())
+        const Center(child: Login())
       ]),
       //Barra inferior
       bottomNavigationBar: StylishBottomBar(
         items: bottomBarItems,
         option: AnimatedBarOptions(
-            barAnimation: BarAnimation.fade, iconStyle: IconStyle.animated),
+            barAnimation: BarAnimation.fade, iconStyle: IconStyle.Default),
         currentIndex: selected,
         onTap: (index) {
           setState(() {
@@ -58,8 +66,8 @@ class _PageControlState extends State<PageControl> {
 
 List<BottomBarItem> bottomBarItems = [
   BottomBarItem(
-    icon: const Icon(Icons.home),
-    selectedIcon: const Icon(Icons.home_filled),
+    icon: const Icon(Icons.home_outlined),
+    selectedIcon: const Icon(Icons.home),
     unSelectedColor: Colors.black,
     selectedColor: Colors.red,
     title: const Text('Home'),
