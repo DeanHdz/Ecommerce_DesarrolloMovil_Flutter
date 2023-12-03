@@ -1,10 +1,19 @@
 import 'package:ecommerce/models/product.dart';
 import 'package:ecommerce/models/shop.dart';
+import 'package:ecommerce/pages/payment_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
+
+  void payButtonPressed(BuildContext context) {
+    //Ir a pagina de registro
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const PaymentPage()),
+    );
+  }
 
   //remove item from cart method
   void removeItemFromCart(BuildContext context, Product product) {
@@ -70,6 +79,11 @@ class CartPage extends StatelessWidget {
           ),
 
           // boton para pagar
+          ElevatedButton(
+              onPressed: () {
+                payButtonPressed(context);
+              },
+              child: const Text("Comprar"))
         ],
       ),
     );

@@ -46,6 +46,8 @@ class Shop extends ChangeNotifier {
   // Add item to cart
   void addToCart(Product item) {
     _cart.add(item);
+    // Notificar listeners que el carrito se modifico (pageControl)
+    notifyListeners();
   }
 
   // Remove item from cart

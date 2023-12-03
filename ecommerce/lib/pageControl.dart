@@ -1,3 +1,4 @@
+import 'package:ecommerce/models/product.dart';
 import 'package:ecommerce/pages/cart_page.dart';
 import 'package:ecommerce/pages/home_page.dart';
 import 'package:ecommerce/pages/login_page.dart';
@@ -17,20 +18,48 @@ class PageControl extends StatefulWidget {
 }
 
 class _PageControlState extends State<PageControl> {
-  late dynamic selected = 0; // Declare as late to avoid null safety warnings
+  //Pagina seleccionada, por default es 1 (Home) en initState
+  late dynamic selected;
+  //Controlador de vistas de pagina
   late PageController pageController;
+  //Mostrar productos en el carrito
+  late List<Product> cart = context.watch<Shop>().cart;
+  //Mostrar productos de la tienda
+  late List<Product> products = context.watch<Shop>().shop;
 
   @override
   void initState() {
     super.initState();
-    selected = 0; // Initialize selected in initState
     pageController = PageController(); // Initialize pageController in initState
+    selected = 0;
   }
 
   @override
   Widget build(BuildContext context) {
-    // Acceder a productos en la tienda
-    final products = context.watch<Shop>().shop;
+    List<BottomBarItem> bottomBarItems = [
+      BottomBarItem(
+        icon: const Icon(Icons.home_outlined),
+        selectedIcon: const Icon(Icons.home),
+        unSelectedColor: Colors.black,
+        selectedColor: Colors.red,
+        title: const Text('Inicio'),
+      ),
+      BottomBarItem(
+        icon: const Icon(Icons.shopping_cart_outlined),
+        selectedIcon: const Icon(Icons.shopping_cart),
+        unSelectedColor: Colors.black,
+        selectedColor: Colors.red,
+        title: const Text('Carrito'),
+        badge: Text(cart.length.toString()), //Numero de elementos en carrito
+        showBadge: cart.isNotEmpty ? true : false, //Mostrar punto de alerta
+      ),
+      BottomBarItem(
+          icon: const Icon(Icons.person_outline),
+          selectedIcon: const Icon(Icons.person),
+          unSelectedColor: Colors.black,
+          selectedColor: Colors.red,
+          title: const Text('Perfil'))
+    ];
 
     /*@override
     void dispose() {
@@ -61,28 +90,3 @@ class _PageControlState extends State<PageControl> {
     );
   }
 }
-
-List<BottomBarItem> bottomBarItems = [
-  BottomBarItem(
-    icon: const Icon(Icons.home_outlined),
-    selectedIcon: const Icon(Icons.home),
-    unSelectedColor: Colors.black,
-    selectedColor: Colors.red,
-    title: const Text('Inicio'),
-  ),
-  BottomBarItem(
-    icon: const Icon(Icons.shopping_cart_outlined),
-    selectedIcon: const Icon(Icons.shopping_cart),
-    unSelectedColor: Colors.black,
-    selectedColor: Colors.red,
-    title: const Text('Carrito'),
-    badge: const Text('9+'), //Numero de elementos en carrito
-    showBadge: true, //Mostrar punto de alerta
-  ),
-  BottomBarItem(
-      icon: const Icon(Icons.person_outline),
-      selectedIcon: const Icon(Icons.person),
-      unSelectedColor: Colors.black,
-      selectedColor: Colors.red,
-      title: const Text('Perfil'))
-];
