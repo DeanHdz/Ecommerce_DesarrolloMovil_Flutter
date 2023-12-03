@@ -12,7 +12,7 @@ class Shop extends ChangeNotifier {
         price: 99.99,
         description:
             "Item description... lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-        imagePath: 'pc.jpg'),
+        imagePath: 'headphones.png'),
     Product(
         name: "Product 2",
         price: 199.99,

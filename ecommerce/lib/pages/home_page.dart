@@ -25,7 +25,6 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         children: [
           const SizedBox(height: 25),
-          //Subtitulo de tienda
           Center(
             child: Text(
               "Elige del siguiente listado de productos",
@@ -33,20 +32,13 @@ class _HomePageState extends State<HomePage> {
                   color: Theme.of(context).colorScheme.inversePrimary),
             ),
           ),
-          //Lista de productos
-          SizedBox(
-            height: 550,
-            child: ListView.builder(
-              itemCount: widget.products.length,
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.all(15),
-              itemBuilder: (context, index) {
-                // agarra cada producto individual de la tienda
-                final product = widget.products[index];
-
-                // Retorna la vista del producto individual
+          // Use a SingleChildScrollView to enable horizontal and vertical scrolling
+          SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: widget.products.map((product) {
                 return ProductTile(product: product);
-              },
+              }).toList(),
             ),
           ),
         ],
