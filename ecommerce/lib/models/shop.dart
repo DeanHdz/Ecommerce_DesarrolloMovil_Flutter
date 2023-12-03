@@ -35,8 +35,11 @@ class Shop extends ChangeNotifier {
   List<Product> _cart = [];
 
   // Usuario
-  //User _user = User(id: 1, name: "Dean Joshua Hernandez", password: "pass1234"); //Iniciado sesion
-  User _user = User(id: null, name: null, password: null); //Vista de invitado
+  User _user = User(
+      id: 1,
+      name: "Dean Joshua Hernandez",
+      password: "pass1234"); //Iniciado sesion
+  //User _user = User(id: null, name: null, password: null); //Vista de invitado
 
   // Get product list
   List<Product> get shop => _shop;
@@ -46,6 +49,12 @@ class Shop extends ChangeNotifier {
 
   // Get user
   User get user => _user;
+
+  //Cerrar sesión y dejar cuenta de invitado
+  void setGuestUser() {
+    _user = User(id: null, name: null, password: null);
+    notifyListeners();
+  }
 
   // Agregar producto a carrito
   void addToCart(Product item) {
