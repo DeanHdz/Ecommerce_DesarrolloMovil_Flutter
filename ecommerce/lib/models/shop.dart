@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'product.dart';
+import 'user.dart';
 
 //Cualquier cambio que hagamos (agregar/borrar de carrito) notificamos a los listeners
 //Significa que actualizamos el UI para los componentes que estan atentos a los cambios
@@ -33,11 +34,18 @@ class Shop extends ChangeNotifier {
   // Carrito de usuario
   List<Product> _cart = [];
 
+  // Usuario
+  //User _user = User(id: 1, name: "Dean Joshua Hernandez", password: "pass1234"); //Iniciado sesion
+  User _user = User(id: null, name: null, password: null); //Vista de invitado
+
   // Get product list
   List<Product> get shop => _shop;
 
   // Get user cart
   List<Product> get cart => _cart;
+
+  // Get user
+  User get user => _user;
 
   // Agregar producto a carrito
   void addToCart(Product item) {

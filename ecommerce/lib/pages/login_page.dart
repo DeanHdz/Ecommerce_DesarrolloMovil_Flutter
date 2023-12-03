@@ -1,4 +1,5 @@
 import 'package:ecommerce/pageControl.dart';
+import 'package:ecommerce/pages/admin_page.dart';
 import 'package:ecommerce/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
@@ -152,7 +153,17 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void loginButton() {
-    //(Dean) Implementar consulta de cuenta en firebase, usar showAlertDialog para errores
+    //Si ingresa admin en ambos campos redirige al home de admin
+    //Sé muy bien que esto no se hace en la vida real Gus, no empieces ಠ╭╮ಠ"
+    if (user.text == "admin" && pass.text == "admin") {
+      //Ir a pagina de registro
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const AdminPage()),
+      );
+    } else {
+      //(Dean) Implementar consulta de cuenta en firebase, usar showAlertDialog para errores
+    }
   }
 
   void registerButton() {

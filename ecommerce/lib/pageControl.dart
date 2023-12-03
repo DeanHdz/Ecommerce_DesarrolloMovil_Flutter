@@ -1,7 +1,9 @@
 import 'package:ecommerce/models/product.dart';
+import 'package:ecommerce/models/user.dart';
 import 'package:ecommerce/pages/cart_page.dart';
 import 'package:ecommerce/pages/home_page.dart';
 import 'package:ecommerce/pages/login_page.dart';
+import 'package:ecommerce/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
@@ -26,6 +28,8 @@ class _PageControlState extends State<PageControl> {
   late List<Product> cart = context.watch<Shop>().cart;
   //Mostrar productos de la tienda
   late List<Product> products = context.watch<Shop>().shop;
+  //Obtener usuario
+  late User user = context.watch<Shop>().user;
 
   @override
   void initState() {
@@ -70,9 +74,9 @@ class _PageControlState extends State<PageControl> {
     return Scaffold(
       // Las difrentes vistas de paginas se controlan mediante PageView
       body: PageView(controller: pageController, children: [
-        Center(child: HomePage(products: products)),
+        Center(child: HomePage(products: products, user: user)),
         const Center(child: CartPage()),
-        const Center(child: LoginPage())
+        const Center(child: ProfilePage())
       ]),
       //Barra inferior
       bottomNavigationBar: StylishBottomBar(
@@ -81,10 +85,18 @@ class _PageControlState extends State<PageControl> {
             barAnimation: BarAnimation.fade, iconStyle: IconStyle.Default),
         currentIndex: selected,
         onTap: (index) {
-          setState(() {
-            selected = index;
-          });
-          pageController.jumpToPage(index);
+          // si no se ha definido un usuario, redirigir a login
+          if (user.id == null) {
+            // Redirect to LoginPage
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => const LoginPage()));
+          } else {
+            //Si ya ha iniciado sesión lo redirige de acuerdo al bottomNavBar
+            setState(() {
+              selected = index;
+            });
+            pageController.jumpToPage(index);
+          }
         },
       ),
     );

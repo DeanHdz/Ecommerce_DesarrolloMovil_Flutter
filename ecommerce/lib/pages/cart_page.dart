@@ -45,6 +45,9 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // get user
+    final user = context.watch<Shop>().user;
+
     // get access to the cart
     final cart = context.watch<Shop>().cart;
 

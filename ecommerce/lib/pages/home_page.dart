@@ -1,11 +1,14 @@
 import 'package:ecommerce/components/product_tile.dart';
 import 'package:ecommerce/models/product.dart';
+import 'package:ecommerce/models/user.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   final List<Product> products;
+  final User user; //Puede o no tener una sesion de usuario actual
 
-  const HomePage({Key? key, required this.products}) : super(key: key);
+  const HomePage({Key? key, required this.products, required this.user})
+      : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -19,7 +22,18 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         foregroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Tienda"),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text("Tienda"),
+            Text(
+              widget.user.id == null
+                  ? "Vista de invitado"
+                  : "Bienvenido, ${widget.user.name}!",
+              style: const TextStyle(fontSize: 12),
+            )
+          ],
+        ),
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: ListView(
