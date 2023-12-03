@@ -5,33 +5,29 @@ import 'product.dart';
 //Significa que actualizamos el UI para los componentes que estan atentos a los cambios
 class Shop extends ChangeNotifier {
   // Productos a la venta
-  final List<Product> _shop = [
-    // product 1
+  List<Product> _shop = [
+    // (Dean) lista de productos, reemplazar con fetch de firebase
     Product(
-      name: "Product 1",
-      price: 99.99,
-      description:
-          "Item description... lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-      //imagePath: imagePath
-    ),
+        name: "Product 1",
+        price: 99.99,
+        description:
+            "Item description... lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
+        imagePath: 'pc.jpg'),
     Product(
-      name: "Product 2",
-      price: 199.99,
-      description: "Item description...",
-      //imagePath: imagePath
-    ),
+        name: "Product 2",
+        price: 199.99,
+        description: "Item description...",
+        imagePath: 'keyboard.jpg'),
     Product(
-      name: "Product 3",
-      price: 299.99,
-      description: "Item description...",
-      //imagePath: imagePath
-    ),
+        name: "Product 3",
+        price: 299.99,
+        description: "Item description...",
+        imagePath: 'mic.jpg'),
     Product(
-      name: "Product 4",
-      price: 399.99,
-      description: "Item description...",
-      //imagePath: imagePath
-    )
+        name: "Product 4",
+        price: 399.99,
+        description: "Item description...",
+        imagePath: 'pc.jpg')
   ];
 
   // Carrito de usuario
@@ -43,14 +39,14 @@ class Shop extends ChangeNotifier {
   // Get user cart
   List<Product> get cart => _cart;
 
-  // Add item to cart
+  // Agregar producto a carrito
   void addToCart(Product item) {
     _cart.add(item);
     // Notificar listeners que el carrito se modifico (pageControl)
     notifyListeners();
   }
 
-  // Remove item from cart
+  // Remover producto de carrito
   void removeFromCart(Product item) {
     _cart.remove(item);
     // Notificar listeners que el carrito se modifico (cart_page)

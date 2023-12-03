@@ -11,7 +11,7 @@ class ProductTile extends StatelessWidget {
     required this.product,
   });
 
-  // add to cart button pressed
+  // Presionado boton agregar a carrito
 
   void addToCart(BuildContext context) {
     showDialog(
@@ -66,7 +66,7 @@ class ProductTile extends StatelessWidget {
                   ),
                   width: double.infinity, //Llenar todo el width
                   padding: const EdgeInsets.all(25),
-                  child: const Icon(Icons.favorite),
+                  child: Image.asset(product.imagePath),
                 ),
               ),
 
