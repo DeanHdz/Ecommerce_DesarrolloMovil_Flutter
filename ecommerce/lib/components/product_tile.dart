@@ -65,8 +65,8 @@ class ProductTile extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   width: double.infinity, //Llenar todo el width
-                  padding: EdgeInsets.all(25),
-                  child: Icon(Icons.favorite),
+                  padding: const EdgeInsets.all(25),
+                  child: const Icon(Icons.favorite),
                 ),
               ),
 
@@ -99,7 +99,7 @@ class ProductTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // precio de producto
-              Text('\$' + product.price.toStringAsFixed(2)),
+              Text('\$${product.price.toStringAsFixed(2)}'),
 
               // agregar a carrito
               Container(

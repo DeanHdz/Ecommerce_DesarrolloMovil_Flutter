@@ -1,8 +1,6 @@
-import 'dart:html';
-
-import 'package:ecommerce/pages/home.dart';
-import 'package:ecommerce/pages/login.dart';
-import 'package:ecommerce/pages/register.dart';
+import 'package:ecommerce/pages/cart_page.dart';
+import 'package:ecommerce/pages/home_page.dart';
+import 'package:ecommerce/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';
@@ -43,9 +41,9 @@ class _PageControlState extends State<PageControl> {
     return Scaffold(
       // Las difrentes vistas de paginas se controlan mediante PageView
       body: PageView(controller: pageController, children: [
-        Center(child: Home(products: products)),
-        const Center(child: Login()),
-        const Center(child: Login())
+        Center(child: HomePage(products: products)),
+        const Center(child: CartPage()),
+        const Center(child: LoginPage())
       ]),
       //Barra inferior
       bottomNavigationBar: StylishBottomBar(
@@ -70,14 +68,14 @@ List<BottomBarItem> bottomBarItems = [
     selectedIcon: const Icon(Icons.home),
     unSelectedColor: Colors.black,
     selectedColor: Colors.red,
-    title: const Text('Home'),
+    title: const Text('Inicio'),
   ),
   BottomBarItem(
-    icon: const Icon(Icons.shopping_basket_outlined),
-    selectedIcon: const Icon(Icons.shopping_basket),
+    icon: const Icon(Icons.shopping_cart_outlined),
+    selectedIcon: const Icon(Icons.shopping_cart),
     unSelectedColor: Colors.black,
     selectedColor: Colors.red,
-    title: const Text('Cart'),
+    title: const Text('Carrito'),
     badge: const Text('9+'), //Numero de elementos en carrito
     showBadge: true, //Mostrar punto de alerta
   ),
@@ -86,5 +84,5 @@ List<BottomBarItem> bottomBarItems = [
       selectedIcon: const Icon(Icons.person),
       unSelectedColor: Colors.black,
       selectedColor: Colors.red,
-      title: const Text('Profile'))
+      title: const Text('Perfil'))
 ];

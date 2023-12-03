@@ -2,16 +2,16 @@ import 'package:ecommerce/components/product_tile.dart';
 import 'package:ecommerce/models/product.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
+class HomePage extends StatefulWidget {
   final List<Product> products;
 
-  const Home({Key? key, required this.products}) : super(key: key);
+  const HomePage({Key? key, required this.products}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomeState extends State<Home> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

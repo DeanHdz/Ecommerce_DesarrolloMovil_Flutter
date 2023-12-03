@@ -51,5 +51,7 @@ class Shop extends ChangeNotifier {
   // Remove item from cart
   void removeFromCart(Product item) {
     _cart.remove(item);
+    // Notificar listeners que el carrito se modifico (cart_page)
+    notifyListeners();
   }
 }

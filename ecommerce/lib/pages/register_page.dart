@@ -1,18 +1,18 @@
 import 'package:ecommerce/pageControl.dart';
-import 'package:ecommerce/pages/register.dart';
-import 'package:ecommerce/pages/home.dart';
+import 'package:ecommerce/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterPageState extends State<RegisterPage> {
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
+  TextEditingController passVerify = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -65,11 +65,12 @@ class _LoginState extends State<Login> {
                     color: Color.fromRGBO(248, 248, 248, 1),
                   ),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
                         margin: const EdgeInsets.all(40.0),
                         child: const Text(
-                          'Inicio de sesión',
+                          'Registro de cuenta nueva',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 24.0,
@@ -83,7 +84,7 @@ class _LoginState extends State<Login> {
                       TextField(
                         controller: user,
                         decoration: const InputDecoration(
-                          labelText: 'Usuario',
+                          labelText: 'Nombre de usuario',
                           hintText: 'Ingresar nombre de usuario',
                         ),
                       ),
@@ -95,23 +96,35 @@ class _LoginState extends State<Login> {
                         controller: pass,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          labelText: 'Contraseña',
-                          hintText: 'Ingresar contraseña',
+                          labelText: 'Ingresar contraseña',
+                          hintText: 'Contraseña',
+                        ),
+                      ),
+
+                      const SizedBox(height: 16.0), // Spacer
+
+                      // Contraseña verificacion
+                      TextField(
+                        controller: passVerify,
+                        obscureText: true,
+                        decoration: const InputDecoration(
+                          labelText: 'Ingresar contraseña nuevamente',
+                          hintText: 'Contraseña',
                         ),
                       ),
 
                       const SizedBox(height: 24.0), // Spacer
 
-                      // Boton login
+                      // Boton crear cuenta
                       ElevatedButton(
                         onPressed: () {
-                          loginButton();
+                          // Logica registro de cuenta (firebase)
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor:
                                 const Color.fromRGBO(174, 0, 0, 1)),
                         child: const Text(
-                          'Ingresar',
+                          'Crear cuenta',
                           style: TextStyle(
                               color: Color.fromRGBO(248, 248, 248, 1)),
                         ),
@@ -119,10 +132,10 @@ class _LoginState extends State<Login> {
 
                       const SizedBox(height: 24.0), // Spacer
 
-                      // Boton registro
+                      // Boton cancelar
                       ElevatedButton(
                         onPressed: () {
-                          registerButton();
+                          cancelarButton();
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
@@ -136,7 +149,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         child: const Text(
-                          'Registrarte',
+                          'Cancelar',
                           style:
                               TextStyle(color: Color.fromRGBO(31, 31, 41, 1)),
                         ),
@@ -152,15 +165,20 @@ class _LoginState extends State<Login> {
     );
   }
 
-  void loginButton() {
-    //(Dean) Implementar consulta de cuenta en firebase, usar showAlertDialog para errores
+  void registerButton() {
+    if (pass != passVerify) {
+      showAlertDialog(context, 'Contraseñas no coinciden',
+          'Asegurate de que coincidan ambos campos de contraseña');
+    }
+
+    //(Dean) Implementar creación de usuario en firebase, cuando se crea exitosamente redirigir a pagina de home con sesión iniciado
   }
 
-  void registerButton() {
-    //Ir a pagina de registro
+  void cancelarButton() {
+    //Regresar a pagina login
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const Register()),
+      MaterialPageRoute(builder: (context) => const LoginPage()),
     );
   }
 }
