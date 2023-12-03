@@ -16,6 +16,7 @@ class _LoginState extends State<Login> {
         child: Container(
           color: Color.fromRGBO(174, 0, 0, 1),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
                 padding: EdgeInsets.only(

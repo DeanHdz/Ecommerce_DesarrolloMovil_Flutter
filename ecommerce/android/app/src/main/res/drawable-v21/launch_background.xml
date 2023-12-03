@@ -6,7 +6,10 @@
     <!-- You can insert your own image assets here -->
     <!-- <item>
         <bitmap
-            android:gravity="center"
+            android:gravity="center" //fill horizontal fillverrtical
             android:src="@mipmap/launch_image" />
+            cambiar mipmap por drawable
+            1080 x 1920
+            splash screen 
     </item> -->
 </layer-list>
