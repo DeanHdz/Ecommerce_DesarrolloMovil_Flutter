@@ -65,12 +65,6 @@ class _PageControlState extends State<PageControl> {
           title: const Text('Perfil'))
     ];
 
-    /*@override
-    void dispose() {
-      pageController.dispose();
-      super.dispose();
-    }*/
-
     return Scaffold(
       // Las difrentes vistas de paginas se controlan mediante PageView
       body: PageView(controller: pageController, children: [

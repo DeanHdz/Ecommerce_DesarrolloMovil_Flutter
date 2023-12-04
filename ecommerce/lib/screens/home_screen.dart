@@ -2,6 +2,8 @@ import 'package:ecommerce/components/product_tile_widget.dart';
 import 'package:ecommerce/models/producto.dart';
 import 'package:ecommerce/models/user.dart';
 import 'package:flutter/material.dart';
+import 'package:ecommerce/services/firestore.dart';
+
 
 class HomePage extends StatefulWidget {
   final List<Product> products;
@@ -35,8 +37,8 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: ListView(
-        children: [
+      body: Column(
+        children:[
           const SizedBox(height: 25),
           Center(
             child: Text(
@@ -45,16 +47,24 @@ class _HomePageState extends State<HomePage> {
                   color: Theme.of(context).colorScheme.inversePrimary),
             ),
           ),
-          // Use a SingleChildScrollView to enable horizontal and vertical scrolling
-          SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: widget.products.map((product) {
-                return ProductTile(product: product);
-              }).toList(),
-            ),
+          Expanded(
+            flex: 1,
+            child: FutureBuilder(future: getProductos(), builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                  itemCount: snapshot.data?.length,
+                  itemBuilder: (context, index) {
+                    return ProductTile(product: Product.fromMap(snapshot.data?[index]));
+                  }
+                );
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator()
+                );
+              }
+            }),
           ),
-        ],
+        ]
       ),
     );
   }

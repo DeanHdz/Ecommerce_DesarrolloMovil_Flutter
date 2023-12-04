@@ -6,30 +6,7 @@ import 'user.dart';
 //Significa que actualizamos el UI para los componentes que estan atentos a los cambios
 class Shop extends ChangeNotifier {
   // Productos a la venta
-  final List<Product> _shop = [
-    // (Dean) lista de productos, reemplazar con fetch de firebase
-    Product(
-        name: "Product 1",
-        price: '99.99',
-        description:
-            "Item description... lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
-        image: 'headphones.png'),
-    Product(
-        name: "Product 2",
-        price: '199.99',
-        description: "Item description...",
-        image: 'keyboard.jpg'),
-    Product(
-        name: "Product 3",
-        price: '299.99',
-        description: "Item description...",
-        image: 'mic.jpg'),
-    Product(
-        name: "Product 4",
-        price: '399.99',
-        description: "Item description...",
-        image: 'pc.jpg')
-  ];
+  final List<Product> _shop = [];
 
   // Carrito de usuario
   final List<Product> _cart = [];
