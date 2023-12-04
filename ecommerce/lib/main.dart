@@ -6,11 +6,17 @@ import 'package:ecommerce/themes/light_mode.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+//Importacion de google maps
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'dart:html' as html;
+
 //Importaciones de firebase
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
+  //html.window.onBeforeUnload
+  //    .listen((_) => GoogleMapController.controller?.dispose());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(
