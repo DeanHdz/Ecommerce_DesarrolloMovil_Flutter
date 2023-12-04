@@ -1,26 +1,51 @@
+import 'package:ecommerce/page_control.dart';
+import 'package:ecommerce/pages/admin_page.dart';
+import 'package:ecommerce/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController user = TextEditingController();
+  TextEditingController pass = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        // No back button in the AppBar
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color.fromRGBO(174, 0, 0, 1),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.home,
+              color: Colors.white,
+              size: 40.0,
+            ),
+            onPressed: () {
+              //Ir a pagina de registro
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const PageControl()),
+              );
+            },
+          ),
+        ],
+      ),
       body: Center(
         child: Container(
           color: const Color.fromRGBO(174, 0, 0, 1),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             children: [
               const Padding(
                 padding: EdgeInsets.only(
-                    left: 16.0, right: 16.0, top: 50.0, bottom: 50.0),
+                    left: 16.0, right: 16.0, top: 20.0, bottom: 20.0),
                 child: Text(
                   'SLP Express',
                   style: TextStyle(
@@ -55,8 +80,9 @@ class _LoginState extends State<Login> {
                       const SizedBox(height: 24.0), // Spacer
 
                       // Usuario
-                      const TextField(
-                        decoration: InputDecoration(
+                      TextField(
+                        controller: user,
+                        decoration: const InputDecoration(
                           labelText: 'Usuario',
                           hintText: 'Ingresar nombre de usuario',
                         ),
@@ -65,22 +91,25 @@ class _LoginState extends State<Login> {
                       const SizedBox(height: 16.0), // Spacer
 
                       // Contraseña
-                      const TextField(
+                      TextField(
+                        controller: pass,
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Contraseña',
                           hintText: 'Ingresar contraseña',
                         ),
                       ),
 
                       const SizedBox(height: 24.0), // Spacer
+
                       // Boton login
                       ElevatedButton(
                         onPressed: () {
-                          // Logica login
+                          loginButton();
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color.fromRGBO(174, 0, 0, 1)),
+                            backgroundColor:
+                                const Color.fromRGBO(174, 0, 0, 1)),
                         child: const Text(
                           'Ingresar',
                           style: TextStyle(
@@ -89,13 +118,15 @@ class _LoginState extends State<Login> {
                       ),
 
                       const SizedBox(height: 24.0), // Spacer
+
                       // Boton registro
                       ElevatedButton(
                         onPressed: () {
-                          // Logica registro
+                          registerButton();
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromRGBO(248, 248, 248, 1),
+                          backgroundColor:
+                              const Color.fromRGBO(248, 248, 248, 1),
                           shape: RoundedRectangleBorder(
                             side: const BorderSide(
                               color: Color.fromRGBO(174, 0, 0, 1),
@@ -120,4 +151,46 @@ class _LoginState extends State<Login> {
       ),
     );
   }
+
+  void loginButton() {
+    //Si ingresa admin en ambos campos redirige al home de admin
+    //Sé muy bien que esto no se hace en la vida real Gus, no empieces ಠ╭╮ಠ"
+    if (user.text == "admin" && pass.text == "admin") {
+      //Ir a pagina de registro
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const AdminPage()),
+      );
+    } else {
+      //(Dean) Implementar consulta de cuenta en firebase, usar showAlertDialog para errores
+    }
+  }
+
+  void registerButton() {
+    //Ir a pagina de registro
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const RegisterPage()),
+    );
+  }
+}
+
+void showAlertDialog(BuildContext context, String title, String content) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(title),
+        content: Text(content),
+        actions: <Widget>[
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      );
+    },
+  );
 }

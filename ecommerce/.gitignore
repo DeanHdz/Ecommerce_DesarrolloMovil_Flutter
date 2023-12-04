@@ -43,10 +43,29 @@ app.*.map.json
 /android/app/release
 
 #Evitar problemas de compatibilidad?
-#/windows/
-#/macos/
-#/linux/
-#/ios/
+/windows/
+/macos/
+/linux/
+/ios/
+.windows/
+.macos/
+.linux/
+.ios/
+
+# Flutter/Dart specific
+*.iml
+.dart_tool/
+.pub/
+build/
+.idea/
+.vscode/
+
+# Exclude platform-specific folders
+windows/
+macos/
+linux/
+ios/
+
 
 
 #SCRIPT SACADO DE GUGUL
