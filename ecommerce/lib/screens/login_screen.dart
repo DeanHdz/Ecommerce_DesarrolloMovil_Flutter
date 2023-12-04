@@ -17,6 +17,14 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController password = TextEditingController();
 
   @override
+  void dispose() {
+    username.dispose();
+    email.dispose();
+    password.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -97,7 +105,6 @@ class _LoginPageState extends State<LoginPage> {
                         const SizedBox(height: 16.0),
                         TextField(
                           controller: password,
-                          obscureText: true,
                           decoration: const InputDecoration(
                             labelText: 'Contraseña',
                             hintText: 'Ingresar contraseña',

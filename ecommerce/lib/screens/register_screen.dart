@@ -18,6 +18,15 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController passVerify = TextEditingController();
 
   @override
+  void dispose() {
+    user.dispose();
+    email.dispose();
+    pass.dispose();
+    passVerify.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
