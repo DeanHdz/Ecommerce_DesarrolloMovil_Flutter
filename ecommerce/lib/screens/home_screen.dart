@@ -2,7 +2,7 @@ import 'package:ecommerce/components/product_tile_widget.dart';
 import 'package:ecommerce/models/producto.dart';
 import 'package:ecommerce/models/user.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce/services/firestore_productos.dart';
+import 'package:ecommerce/services/firestore_products.dart';
 
 
 class HomePage extends StatefulWidget {

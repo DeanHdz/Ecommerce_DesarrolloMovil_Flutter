@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ecommerce/services/firestore_productos.dart';
+import 'package:ecommerce/services/firestore_products.dart';
 
 class EliminarProductoAlertDialog extends StatelessWidget {
   final String id;

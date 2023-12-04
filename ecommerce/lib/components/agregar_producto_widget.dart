@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:ecommerce/services/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce/services/firestore_productos.dart';
+import 'package:ecommerce/services/firestore_products.dart';
 import 'package:ecommerce/services/select_image.dart';
 
 class AgregarProductoAlertDialog extends StatefulWidget {

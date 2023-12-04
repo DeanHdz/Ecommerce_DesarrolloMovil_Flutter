@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ecommerce/services/firestore_productos.dart';
+import 'package:ecommerce/services/firestore_products.dart';
 import 'package:ecommerce/components/actualizar_producto_widget.dart';
 import 'package:ecommerce/components/eliminar_producto_widget.dart';
 import 'package:ecommerce/components/agregar_producto_widget.dart';

@@ -1,4 +1,6 @@
 import 'package:ecommerce/models/shop.dart';
+import 'package:ecommerce/screens/login.dart';
+import 'package:ecommerce/screens/login_screen.dart';
 import 'package:ecommerce/screens/page_control.dart';
 import 'package:ecommerce/themes/light_mode.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +28,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const PageControl(),
+      home: const LoginPage(),
       theme: lightMode,
     );
   }

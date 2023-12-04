@@ -1,7 +1,7 @@
 
 import 'package:ecommerce/components/product_tile_widget.dart';
 import 'package:ecommerce/models/producto.dart';
-import 'package:ecommerce/services/firestore_productos.dart';
+import 'package:ecommerce/services/firestore_products.dart';
 import 'package:flutter/material.dart';
 
 class Consultar extends StatefulWidget {

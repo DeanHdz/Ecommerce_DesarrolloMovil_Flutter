@@ -66,7 +66,7 @@ class ProductTile extends StatelessWidget {
                   ),
                   width: double.infinity, //Llenar todo el width
                   padding: const EdgeInsets.all(25),
-                  child: Image.asset('assets/images/${product.image}')
+                  child: Image.network(product.image)
                 ),
               ),
 
