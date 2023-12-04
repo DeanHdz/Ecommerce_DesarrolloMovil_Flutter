@@ -1,5 +1,4 @@
 import 'package:ecommerce/models/shop.dart';
-import 'package:ecommerce/screens/page_control.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,18 +28,11 @@ class ProfilePage extends StatelessWidget {
             ),
           ],
         ),
-        // boton para pagar
         Center(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: ElevatedButton(
                 onPressed: () {
-                  //Ir a pagina de home
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PageControl()),
-                  );
                   shop.setGuestUser();
                 },
                 child: const Text("Cerrar sesión")),
