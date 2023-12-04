@@ -15,17 +15,12 @@ class _AdminScreenState extends State<AdminScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Catálogo de productos'),
+      ),
       body: Column(
-        children:[  
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              const Text('Productos', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
-              FloatingActionButton(onPressed: () async {
-                await alertAgregarProducto(context).then((value) => setState(() {}));
-              }, child: const Text('Agregar'))
-            ],
-          ),
+        mainAxisAlignment: MainAxisAlignment.center,
+        children:[
           Expanded(
             flex: 1,
             child: FutureBuilder(future: getProductos(), builder: (context, snapshot) {
@@ -66,6 +61,10 @@ class _AdminScreenState extends State<AdminScreen> {
           ),
         ]
       ),
+      floatingActionButton:  FloatingActionButton(
+        onPressed: () async {
+          await alertAgregarProducto(context).then((value) => setState(() {}));
+        }, child: const Icon(Icons.add)),
     );
   }
 }

@@ -7,9 +7,10 @@ Future<void> alertEliminarProducto(BuildContext context, String id, String name)
     context: context,
     builder:  (context) {
       return AlertDialog(
-        title: const Text('¿Esta seguro de eliminar este Producto?'),
+        title: const Text('¿Esta seguro de eliminar este producto?'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [Text('Nombre: $name')],
         ),
         actions: [
