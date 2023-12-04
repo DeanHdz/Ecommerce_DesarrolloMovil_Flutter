@@ -62,9 +62,11 @@ class _AdminScreenState extends State<AdminScreen> {
         ]
       ),
       floatingActionButton:  FloatingActionButton(
-        onPressed: () async {
+        onPressed:() async {
           await alertAgregarProducto(context).then((value) => setState(() {}));
-        }, child: const Icon(Icons.add)),
+        },
+        child: const Icon(Icons.add)
+      ),
     );
   }
 }

@@ -9,8 +9,10 @@ environment:
 dependencies:
   cloud_firestore: ^4.13.1
   firebase_core: ^2.24.0
+  firebase_storage: ^11.5.3
   flutter:
     sdk: flutter
+  image_picker: ^1.0.4
   provider: ^6.1.1
   stylish_bottom_bar: ^1.0.3
 

@@ -1,17 +1,28 @@
-import 'package:ecommerce/services/firestore_productos.dart';
+import 'dart:io';
+import 'package:ecommerce/services/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:ecommerce/services/firestore_productos.dart';
+import 'package:ecommerce/services/select_image.dart';
 
-Future<void> alertAgregarProducto(BuildContext context) async {
+class AgregarProductoAlertDialog extends StatefulWidget {
+  const AgregarProductoAlertDialog({super.key});
+
+  @override
+  AgregarProductoAlertDialogState createState() => AgregarProductoAlertDialogState();
+}
+
+class AgregarProductoAlertDialogState extends State<AgregarProductoAlertDialog> {
   TextEditingController nameController = TextEditingController(text: '');
   TextEditingController priceController = TextEditingController(text: '');
   TextEditingController descriptionController = TextEditingController(text: '');
-  TextEditingController imageController = TextEditingController(text: '');
-  await showDialog(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: const Text('Agregar Producto'),
-        content: Column(
+  String? path;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Agregar Producto'),
+      content: SingleChildScrollView(
+        child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
@@ -26,31 +37,55 @@ Future<void> alertAgregarProducto(BuildContext context) async {
               controller: descriptionController,
               decoration: const InputDecoration(labelText: 'Descripción:'),
             ),
-            TextField(
-              controller: imageController,
-              decoration: const InputDecoration(labelText: 'Imagen:'),
-            )
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () async {
+                  String? selectedPath = await selectImage();
+                  if (selectedPath != null) {
+                    setState(() {
+                      path = selectedPath;
+                    });
+                  }
+                },
+                child: const Text('Seleccionar imagen'),
+              ),
+            ),
+            path != null ? Container(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.file(File(path!)),
+              ) : const Text('No se seleccionó ninguna imagen')
           ],
         ),
-        actions: <Widget>[
-          ElevatedButton(
-            onPressed: () async {
-              if (nameController.text.isNotEmpty && priceController.text.isNotEmpty && descriptionController.text.isNotEmpty && imageController.text.isNotEmpty) {
-                await addProducto(nameController.text, priceController.text, descriptionController.text,imageController.text).then((_){
-                  Navigator.of(context).pop();
-                });
-              }
-            },
-            child: const Text('Agregar'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text('Cancelar'),
-          ),
-        ],
-      );
+      ),
+      actions: <Widget>[
+        ElevatedButton(
+          onPressed: () async {
+            if (nameController.text.isNotEmpty && priceController.text.isNotEmpty && descriptionController.text.isNotEmpty && path != null) {
+              await uploadFile(path!).then((value) => path = value);
+              await addProducto(nameController.text, priceController.text, descriptionController.text, path!).then((_) {
+                Navigator.of(context).pop();
+              });
+            }
+          },
+          child: const Text('Agregar'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: const Text('Cancelar'),
+        ),
+      ],
+    );
+  }
+}
+
+Future<void> alertAgregarProducto(BuildContext context) async {
+  await showDialog(
+    context: context,
+    builder: (context) {
+      return const AgregarProductoAlertDialog();
     },
   );
 }

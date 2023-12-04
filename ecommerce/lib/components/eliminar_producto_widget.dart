@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ecommerce/services/firestore_productos.dart';
 
-
 Future<void> alertEliminarProducto(BuildContext context, String id, String name) async {
   showDialog(
     context: context,
