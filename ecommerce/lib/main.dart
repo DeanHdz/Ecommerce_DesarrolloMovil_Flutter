@@ -1,7 +1,7 @@
 import 'package:ecommerce/models/shop.dart';
-import 'package:ecommerce/screens/login.dart';
 import 'package:ecommerce/screens/login_screen.dart';
 import 'package:ecommerce/screens/page_control.dart';
+import 'package:ecommerce/screens/register_screen.dart';
 import 'package:ecommerce/themes/light_mode.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +30,12 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: const LoginPage(),
       theme: lightMode,
+      routes: 
+      {
+        '/login': (context) => const LoginPage(),
+        '/pageControl': (context) => const PageControl(),
+        '/register': (context) => const RegisterPage(),
+      }
     );
   }
 }
