@@ -1,7 +1,5 @@
 import 'package:ecommerce/models/shop.dart';
-import 'package:ecommerce/screens/admin_screen.dart';
 import 'package:ecommerce/screens/page_control.dart';
-import 'package:ecommerce/screens/prueba.dart';
 import 'package:ecommerce/themes/light_mode.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +26,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const AdminScreen(),
+      home: const PageControl(),
       theme: lightMode,
     );
   }

@@ -44,48 +44,50 @@ class ActualizarProductoAlertDialogState extends State<ActualizarProductoAlertDi
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text('Actualizar Producto'),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TextField(
-            controller: nameController,
-            decoration: const InputDecoration(labelText: 'Nombre del producto:'),
-          ),
-          TextField(
-            controller: priceController,
-            decoration: const InputDecoration(labelText: 'Precio:'),
-          ),
-          TextField(
-            controller: descriptionController,
-            decoration: const InputDecoration(labelText: 'Descripción:'),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-              onPressed: () async {
-                String? selectedPath = await selectImage();
-                if (selectedPath != null) {
-                  setState(() {
-                    cambioImagen = true;
-                    imagePath = selectedPath;
-                  });
-                }
-              },
-              child: const Text('Seleccionar otra imagen'),
+      content: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              controller: nameController,
+              decoration: const InputDecoration(labelText: 'Nombre del producto:'),
             ),
-          ),
-          Visibility(
-            visible: cambioImagen,
-            replacement: Container(
+            TextField(
+              controller: priceController,
+              decoration: const InputDecoration(labelText: 'Precio:'),
+            ),
+            TextField(
+              controller: descriptionController,
+              decoration: const InputDecoration(labelText: 'Descripción:'),
+            ),
+            Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image.network(imagePath),
+              child: ElevatedButton(
+                onPressed: () async {
+                  String? selectedPath = await selectImage();
+                  if (selectedPath != null) {
+                    setState(() {
+                      cambioImagen = true;
+                      imagePath = selectedPath;
+                    });
+                  }
+                },
+                child: const Text('Seleccionar otra imagen'),
+              ),
             ),
-            child: Container(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.file(File(imagePath)),
-            ),
-          )
-        ],
+            Visibility(
+              visible: cambioImagen,
+              replacement: Container(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.network(imagePath),
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.file(File(imagePath)),
+              ),
+            )
+          ],
+        ),
       ),
       actions: <Widget>[
         ElevatedButton(
