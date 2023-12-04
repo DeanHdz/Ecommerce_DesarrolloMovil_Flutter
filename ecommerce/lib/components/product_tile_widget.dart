@@ -1,6 +1,6 @@
 import 'package:ecommerce/models/shop.dart';
 import 'package:flutter/material.dart';
-import 'package:ecommerce/models/product.dart';
+import 'package:ecommerce/models/producto.dart';
 import 'package:provider/provider.dart';
 
 class ProductTile extends StatelessWidget {
@@ -99,8 +99,7 @@ class ProductTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // precio de producto
-              Text('\$${product.price.toStringAsFixed(2)}'),
-
+              Text('\$${product.price}'),
               // agregar a carrito
               Container(
                   decoration: BoxDecoration(

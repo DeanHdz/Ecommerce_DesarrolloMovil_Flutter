@@ -1,5 +1,5 @@
 import 'package:ecommerce/models/shop.dart';
-import 'package:ecommerce/page_control.dart';
+import 'package:ecommerce/screens/page_control.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

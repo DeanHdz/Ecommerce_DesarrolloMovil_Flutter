@@ -1,4 +1,4 @@
-import 'package:ecommerce/models/product.dart';
+import 'package:ecommerce/models/producto.dart';
 
 // La idea en specified location es poner la direccion, la clase de Order esta sujeto a cambios dependiendo de como queremos manejar el api de google
 

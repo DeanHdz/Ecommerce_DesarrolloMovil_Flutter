@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'product.dart';
+import 'producto.dart';
 import 'user.dart';
 
 //Cualquier cambio que hagamos (agregar/borrar de carrito) notificamos a los listeners
@@ -10,23 +10,23 @@ class Shop extends ChangeNotifier {
     // (Dean) lista de productos, reemplazar con fetch de firebase
     Product(
         name: "Product 1",
-        price: 99.99,
+        price: '99.99',
         description:
             "Item description... lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum",
         image: 'headphones.png'),
     Product(
         name: "Product 2",
-        price: 199.99,
+        price: '199.99',
         description: "Item description...",
         image: 'keyboard.jpg'),
     Product(
         name: "Product 3",
-        price: 299.99,
+        price: '299.99',
         description: "Item description...",
         image: 'mic.jpg'),
     Product(
         name: "Product 4",
-        price: 399.99,
+        price: '399.99',
         description: "Item description...",
         image: 'pc.jpg')
   ];

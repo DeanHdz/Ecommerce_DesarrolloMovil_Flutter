@@ -1,9 +1,9 @@
-import 'package:ecommerce/models/product.dart';
+import 'package:ecommerce/models/producto.dart';
 import 'package:ecommerce/models/user.dart';
-import 'package:ecommerce/pages/cart_page.dart';
-import 'package:ecommerce/pages/home_page.dart';
-import 'package:ecommerce/pages/login_page.dart';
-import 'package:ecommerce/pages/profile_page.dart';
+import 'package:ecommerce/screens/cart_screen.dart';
+import 'package:ecommerce/screens/home_screen.dart';
+import 'package:ecommerce/screens/login_screen.dart';
+import 'package:ecommerce/screens/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stylish_bottom_bar/stylish_bottom_bar.dart';

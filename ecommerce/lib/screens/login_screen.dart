@@ -1,18 +1,18 @@
-import 'package:ecommerce/page_control.dart';
-import 'package:ecommerce/pages/login_page.dart';
+import 'package:ecommerce/screens/page_control.dart';
+import 'package:ecommerce/screens/admin_screen.dart';
+import 'package:ecommerce/screens/register_screen.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _LoginPageState extends State<LoginPage> {
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
-  TextEditingController passVerify = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -65,12 +65,11 @@ class _RegisterPageState extends State<RegisterPage> {
                     color: Color.fromRGBO(248, 248, 248, 1),
                   ),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
                         margin: const EdgeInsets.all(40.0),
                         child: const Text(
-                          'Registro de cuenta nueva',
+                          'Inicio de sesión',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 24.0,
@@ -84,7 +83,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       TextField(
                         controller: user,
                         decoration: const InputDecoration(
-                          labelText: 'Nombre de usuario',
+                          labelText: 'Usuario',
                           hintText: 'Ingresar nombre de usuario',
                         ),
                       ),
@@ -96,35 +95,23 @@ class _RegisterPageState extends State<RegisterPage> {
                         controller: pass,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          labelText: 'Ingresar contraseña',
-                          hintText: 'Contraseña',
-                        ),
-                      ),
-
-                      const SizedBox(height: 16.0), // Spacer
-
-                      // Contraseña verificacion
-                      TextField(
-                        controller: passVerify,
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                          labelText: 'Ingresar contraseña nuevamente',
-                          hintText: 'Contraseña',
+                          labelText: 'Contraseña',
+                          hintText: 'Ingresar contraseña',
                         ),
                       ),
 
                       const SizedBox(height: 24.0), // Spacer
 
-                      // Boton crear cuenta
+                      // Boton login
                       ElevatedButton(
                         onPressed: () {
-                          // Logica registro de cuenta (firebase)
+                          loginButton();
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor:
                                 const Color.fromRGBO(174, 0, 0, 1)),
                         child: const Text(
-                          'Crear cuenta',
+                          'Ingresar',
                           style: TextStyle(
                               color: Color.fromRGBO(248, 248, 248, 1)),
                         ),
@@ -132,10 +119,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
                       const SizedBox(height: 24.0), // Spacer
 
-                      // Boton cancelar
+                      // Boton registro
                       ElevatedButton(
                         onPressed: () {
-                          cancelarButton();
+                          registerButton();
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
@@ -149,7 +136,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           ),
                         ),
                         child: const Text(
-                          'Cancelar',
+                          'Registrarte',
                           style:
                               TextStyle(color: Color.fromRGBO(31, 31, 41, 1)),
                         ),
@@ -165,20 +152,25 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  void registerButton() {
-    if (pass != passVerify) {
-      showAlertDialog(context, 'Contraseñas no coinciden',
-          'Asegurate de que coincidan ambos campos de contraseña');
+  void loginButton() {
+    //Si ingresa admin en ambos campos redirige al home de admin
+    //Sé muy bien que esto no se hace en la vida real Gus, no empieces ಠ╭╮ಠ"
+    if (user.text == "admin" && pass.text == "admin") {
+      //Ir a pagina de registro
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const AdminPage()),
+      );
+    } else {
+      //(Dean) Implementar consulta de cuenta en firebase, usar showAlertDialog para errores
     }
-
-    //(Dean) Implementar creación de usuario en firebase, cuando se crea exitosamente redirigir a pagina de home con sesión iniciado
   }
 
-  void cancelarButton() {
-    //Regresar a pagina login
+  void registerButton() {
+    //Ir a pagina de registro
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const LoginPage()),
+      MaterialPageRoute(builder: (context) => const RegisterPage()),
     );
   }
 }

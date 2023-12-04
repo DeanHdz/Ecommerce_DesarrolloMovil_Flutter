@@ -1,6 +1,6 @@
-import 'package:ecommerce/models/product.dart';
+import 'package:ecommerce/models/producto.dart';
 import 'package:ecommerce/models/shop.dart';
-import 'package:ecommerce/pages/payment_page.dart';
+import 'package:ecommerce/screens/payment_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -71,7 +71,7 @@ class CartPage extends StatelessWidget {
                       // return as a cart tile UI
                       return ListTile(
                         title: Text(item.name),
-                        subtitle: Text(item.price.toStringAsFixed(2)),
+                        subtitle: Text(item.price),
                         trailing: IconButton(
                           icon: const Icon(Icons.remove),
                           onPressed: () => removeItemFromCart(context, item),
