@@ -159,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
       //Ir a pagina de registro
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const AdminPage()),
+        MaterialPageRoute(builder: (context) => const AdminScreen()),
       );
     } else {
       //(Dean) Implementar consulta de cuenta en firebase, usar showAlertDialog para errores

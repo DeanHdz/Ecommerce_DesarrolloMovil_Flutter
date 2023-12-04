@@ -19,7 +19,7 @@ Future<List> getProductos() async {
   return documents;
 }
 
-Future<void> addProducto(String nombre, double precio, String descripcion, String imagen) async {
+Future<void> addProducto(String nombre, String precio, String descripcion, String imagen) async {
   await db.collection('Productos').add({
     'Nombre': nombre,
     'Precio': precio,
@@ -28,7 +28,7 @@ Future<void> addProducto(String nombre, double precio, String descripcion, Strin
   });
 }
 
-Future<void> updateProducto(String id, String nombre, double precio, String descripcion, String imagen) async {
+Future<void> updateProducto(String id, String nombre, String precio, String descripcion, String imagen) async {
   await db.collection('Productos').doc(id).update({
     'Nombre': nombre,
     'Precio': precio,
