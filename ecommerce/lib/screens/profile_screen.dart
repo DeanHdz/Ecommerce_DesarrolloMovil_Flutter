@@ -1,9 +1,12 @@
 import 'package:ecommerce/models/shop.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
+
+  final User? currentUser = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +16,21 @@ class ProfilePage extends StatelessWidget {
     final shop = context.watch<Shop>();
 
     return Scaffold(
-      body: Column(children: [
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+        //Vista de Administrador
+        currentUser!.uid == "2peojaZjxUY5dTY5cdYW3U1DuAr2" ?
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/admin');
+                  },
+                  child: const Text("Ver el Catálogo de productos")),
+            ),
+          ) : const  SizedBox(),
         // Mostrar usuario
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

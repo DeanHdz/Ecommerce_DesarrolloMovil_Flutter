@@ -1,4 +1,5 @@
 import 'package:ecommerce/models/shop.dart';
+import 'package:ecommerce/screens/admin_screen.dart';
 import 'package:ecommerce/screens/login_screen.dart';
 import 'package:ecommerce/screens/page_control.dart';
 import 'package:ecommerce/screens/register_screen.dart';
@@ -35,6 +36,7 @@ class MainApp extends StatelessWidget {
         '/login': (context) => const LoginPage(),
         '/pageControl': (context) => const PageControl(),
         '/register': (context) => const RegisterPage(),
+        '/admin': (context) => const AdminScreen(),
       }
     );
   }

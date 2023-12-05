@@ -184,7 +184,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void crearCuenta() {
     if (pass.text == passVerify.text) {
-      _firebaseAuthService.createUserWithEmailAndPassword(user.text, pass.text).then((User? user) {
+      _firebaseAuthService.createUserWithEmailAndPassword(user.text, email.text, pass.text).then((User? user) {
         if (user != null) {
           Navigator.pushReplacementNamed(context, '/pageControl');
         } else {
