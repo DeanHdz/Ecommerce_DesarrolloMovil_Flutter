@@ -29,6 +29,11 @@ class _AdminScreenState extends State<AdminScreen> {
                   itemCount: snapshot.data?.length,
                   itemBuilder: (context, index) {
                     return ListTile(
+                      leading: SizedBox(
+                        height: 50,
+                        width: 50,
+                        child: Image.network(snapshot.data?[index]['Imagen'], fit: BoxFit.cover),
+                      ),
                       title: Text(snapshot.data?[index]['Nombre']),
                       subtitle: Text(snapshot.data?[index]['Descripcion']),
                       trailing: Row(
