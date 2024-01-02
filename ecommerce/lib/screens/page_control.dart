@@ -70,7 +70,7 @@ class _PageControlState extends State<PageControl> {
       body: PageView(controller: pageController, children: [
         Center(child: HomePage(products: products, user: user)),
         const Center(child: CartPage()),
-        const Center(child: ProfilePage())
+        Center(child: ProfilePage())
       ]),
       //Barra inferior
       bottomNavigationBar: StylishBottomBar(

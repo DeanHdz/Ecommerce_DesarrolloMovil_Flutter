@@ -18,6 +18,15 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController passVerify = TextEditingController();
 
   @override
+  void dispose() {
+    user.dispose();
+    email.dispose();
+    pass.dispose();
+    passVerify.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -175,7 +184,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   void crearCuenta() {
     if (pass.text == passVerify.text) {
-      _firebaseAuthService.createUserWithEmailAndPassword(user.text, pass.text).then((User? user) {
+      _firebaseAuthService.createUserWithEmailAndPassword(user.text, email.text, pass.text).then((User? user) {
         if (user != null) {
           Navigator.pushReplacementNamed(context, '/pageControl');
         } else {
