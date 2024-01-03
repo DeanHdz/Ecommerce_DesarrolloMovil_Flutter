@@ -20,7 +20,7 @@ class ProfilePage extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
         //Vista de Administrador
-        currentUser!.uid == "2peojaZjxUY5dTY5cdYW3U1DuAr2" ?
+        currentUser?.uid == "2peojaZjxUY5dTY5cdYW3U1DuAr2" ?
           Center(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
